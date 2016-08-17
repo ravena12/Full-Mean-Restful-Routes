@@ -18,7 +18,9 @@ function FriendsController(){
     
   };
   this.create = function(req,res){
+    console.log('newfriendnewfriend')
     console.log(req.body);
+     console.log('newfriendnewfriend')
     var friend =  new Friend(req.body)
     friend.save(function(err){
       if(err){
@@ -29,8 +31,22 @@ function FriendsController(){
     })
   };
   this.update = function(req,res){
-    //your code here
-    res.json({placeholder:'update'});
+    console.log('serversideserverside')
+    console.log(req.body);
+    console.log('serversideserverside')
+    Friend.findOne({_id: req.params.id}, function(err, updatefriend){
+      console.log(updatefriend)
+    updatefriend.fname = req.body.fname;
+    updatefriend.lname = req.body.lname;
+    updatefriend.dob = req.body.dob;
+    updatefriend.save(function(err){
+      if(err){
+        console.log(err);
+      } else {
+        res.json(updatefriend);
+      }
+    })
+  })
   };
 
   this.delete = function(req,res){
@@ -50,8 +66,17 @@ function FriendsController(){
     })
   };
   this.show = function(req,res){
-    //your code here
-    res.json({placeholder:'show'});
+    console.log(req.body);
+    Friend.findOne({_id: req.params.id}, function(err, friend){
+      if(err){
+        console.log(err);
+      } else {
+        res.json(friend);
+      }
+    })
+
+    
+    
   };
 }
 module.exports = new FriendsController();

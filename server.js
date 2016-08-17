@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var path = require('path')
 var bodyParser = require('body-parser');
+
 require('./server/config/mongoose.js')
 // body parser json needs to be above routes otherwise it wont parse things correctly
 app.use(bodyParser.json())

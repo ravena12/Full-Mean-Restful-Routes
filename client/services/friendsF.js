@@ -2,6 +2,7 @@ console.log('Friends Factory');
 myApp.factory('friendsFactory', ['$http', function($http) {
   // constructor for our factory
   var friends = [];
+  var friend = [];
   function FriendsFactory(){
     var _this = this;
     this.create = function(newfriend,callback){
@@ -15,8 +16,14 @@ myApp.factory('friendsFactory', ['$http', function($http) {
         }
       });
     };
-    this.update = function(){ // what parameters do we need?
-      // Your code here
+    this.update = function(updateFriend, id,  callback){ 
+      console.log('thisisFRIEND')
+      console.log(updateFriend);
+      console.log('thisisFRIEND')
+      $http.put('/friends/'+ id, updateFriend).then(function(updateFriend){
+        callback(updateFriend.data);
+      })
+
     };
     this.index = function(callback){
       //call this method if you want to update or set the friends variable
@@ -34,15 +41,21 @@ myApp.factory('friendsFactory', ['$http', function($http) {
 
     	})
     };
-    this.show = function(){// what parameters do we need?
-        // Your code here
+    this.show = function(id, callback){
+      console.log('got id')
+        $http.get('/friends/' + id).then(function(showFriend){
+          console.log('%%%%%%%%')
+          console.log(showFriend);
+          console.log('%%%%%%%%')
+          callback(showFriend.data);
+        })
     };
     // Sometimes you might not want to make a DB call, and just get the information stored in the factory.
-    this.getFriends = function(callback){
-      callback(friends);
-    };
+  //   this.getFriends = function(callback){
+  //     callback(friends);
+  //   };
     
-  }
+   }
   console.log(new FriendsFactory());
   return new FriendsFactory();
 }]);

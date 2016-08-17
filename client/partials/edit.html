@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>New</title>
+	<title>edit</title>
 </head>
 <body>
-
-
 	<div class = 'col-xs-offset-5'>
 		<h1>Edit Partial</h1>
-		<form ng-submit>
-			
-		</form>
+		<div ng-controller ='editController'>
+			<form ng-submit = "update()" class = "col-xs-offset-5">
+				<table class = "table-striped">
+					<tr>
+						<td>First Name:</td>
+						<td><input type="text" name="fname" placeholder="First Name" ng-model = 'updateFriend.fname'></td>
+					</tr>
+					<tr>
+						<td>Last Name:</td>
+						<td><input type="text" name="lname" placeholder="Last Name" ng-model = 'updateFriend.lname'></td>
+					</tr>
+					<tr>
+						<td>Birthday:</td>
+						<td><input type="date"  name="dob" ng-model = 'updateFriend.dob'></td>
+					</tr>
+					<tr>
+						<td><input type="Submit" name="submit" value="update User"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
 		<a href="#/"><button class = 'btn btn-primary'>Back</button></a>
 
 	</div>

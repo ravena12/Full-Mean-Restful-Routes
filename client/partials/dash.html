@@ -7,6 +7,7 @@
 </head>
 <body>
 	<div ng-controller = 'friendController'>
+	<input type='text' placeholder='BirthdayFilter' ng-model="filter_dob">
 	<table class = 'table'>
 		<thead>
 			<tr>
@@ -17,10 +18,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat = 'friend in friends'>
+			<tr ng-repeat = 'friend in friends | filter:filter_dob'>
 				<td>{{friend.fname}} {{friend.lname}}</td>
-				<td><a href="#/show">Show</a></td>
-				<td><a href="#/edit">Edit</a></td>
+				<td><a href="#/show/{{friend._id}}">Show</a></td>
+				<td><a href="#/edit/{{friend._id}}">Edit</a></td>
 				<td> <button ng-click ='delete(friend._id)'> Delete </button></td>
 				
 			</tr>
