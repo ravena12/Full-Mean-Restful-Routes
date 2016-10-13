@@ -6,14 +6,8 @@ myApp.controller('editController', ['$scope','friendsFactory', '$routeParams', f
 			fname: data.fname,
 			lname: data.lname,
 			dob: new Date(data.dob)
-
 		};
-		console.log(dob)
-		console.log('heyyyyyyyyy')
-		console.log($scope.updateFriend);
-		console.log('ehhhhhhhhh')
 	})
-	$scope.updateFriend = {};
-
-}
-	 }])
+		$scope.updateFriend = {};
+	}
+	}])
